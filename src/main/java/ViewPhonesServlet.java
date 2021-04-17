@@ -1,3 +1,5 @@
+import Model.Phones;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -14,7 +16,7 @@ public class ViewPhonesServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out=response.getWriter();
         out.println("<a href='adminPhones.jsp'>Add New Phone</a>");
-        out.println("<h1>Phones List</h1>");
+        out.println("<h1>Model.Phones List</h1>");
 
         List<Phones> list=PhonesDAO.getAllPhones();
 

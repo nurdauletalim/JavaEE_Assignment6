@@ -27,6 +27,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="Phones.jsp">Shop</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Posts.jsp">Posts</a>
+                </li>
 <%--                <%--%>
 <%--                    session=request.getSession(false);--%>
 <%--                    if(session!=null){--%>

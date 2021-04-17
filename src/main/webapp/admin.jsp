@@ -20,7 +20,7 @@
 </div>
 <div class="card w-75">
     <div class="card-body">
-        <h5 class="card-title">Phones</h5>
+        <h5 class="card-title">Model.Phones</h5>
         <p class="card-text">Here you can view or edit users.</p>
         <a href="adminPhones.jsp" class="btn btn-primary">Submit</a>
     </div>

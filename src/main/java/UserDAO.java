@@ -1,3 +1,5 @@
+import Model.Users;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,24 +13,58 @@ public class UserDAO {
         }catch(Exception e){System.out.println(e);}
         return con;
     }
-    public static boolean validate(String email,String pass){
-        boolean status=false;
+    public static boolean validate(String username,String pass){
+        ArrayList<Users> users = new ArrayList<>();
         try{
-                Class.forName("org.postgresql.Driver");
-                Connection con=DriverManager.getConnection(
-                        "jdbc:postgresql://localhost:5432/PhoneStore","postgres","123");
-            // getConnection();
-            PreparedStatement ps=con.prepareStatement(
-                    "select * from users where email=? and pass=?");
-            ps.setString(1,email);
-            ps.setString(2,pass);
+            Connection con = UserDAO.getConnection();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM users");
+            while (rs.next()){
+                int id = rs.getInt(1);
+                String username1 = rs.getString(2);
+                String password = rs.getString(3);
+                String userEmail = rs.getString(4);
+                Users user = new Users();
+                users.add(user);
+                user.setId(id);
+                user.setEmail(userEmail);
+                user.setPassword(password);
+                user.setName(username1);
+            }
+            for (Users user: users){
+                if (user.getEmail().equals(username)
+                        && user.getPassword().equals(pass)){
+                    return true;
+                }
+            }
 
-            ResultSet rs=ps.executeQuery();
-            status=rs.next();
 
         }catch(Exception e){System.out.println(e);}
-        return status;
+        return false;
     }
+
+    public Users getUser(String email) {
+        Users us = null;
+        try {
+            Connection con = UserDAO.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE email=?");
+            ps.setString(1,email);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                int userId = rs.getInt(1);
+                String name = rs.getString(2);
+                String pass = rs.getString(3);
+                String useremail = rs.getString(4);
+                us = new Users();
+                us.setId(userId);
+                us.setName(name);
+                us.setPassword(pass);
+                us.setEmail(useremail);
+            }
+
+        }catch(Exception e){System.out.println(e);}
+        return us;
+        }
 
     public static int save(Users e){
         int status=0;
@@ -97,6 +133,8 @@ public class UserDAO {
 
         return e;
     }
+
+
     public static List<Users> getAllEmployees(){
         List<Users> list=new ArrayList<Users>();
 

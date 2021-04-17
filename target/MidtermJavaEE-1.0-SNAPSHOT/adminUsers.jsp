@@ -29,7 +29,7 @@
 
 <br/>
 <a href="ViewServlet" class="btn btn-primary btn-lg btn-block">View users</a><br><br>
-<a href="adminPhones.jsp" class="btn btn-secondary btn-lg btn-block">Phones</a>
+<a href="adminPhones.jsp" class="btn btn-secondary btn-lg btn-block">Model.Phones</a>
 </div>
 </body>
 </html>

@@ -55,7 +55,7 @@
 </head>
 <body class="text-center">
 <main class="form-signin">
-    <form action="servlet1" >
+    <form action="LoginServlet" method="post">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
         <label for="inputEmail" class="visually-hidden">Email address</label>
         <input type="text" id="inputEmail" class="form-control" name="name" placeholder="Email address" required autofocus>

@@ -1,3 +1,5 @@
+package Model;
+
 public class Users {
     private int id;
     private String name,password,email;

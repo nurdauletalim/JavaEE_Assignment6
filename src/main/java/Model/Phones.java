@@ -1,3 +1,5 @@
+package Model;
+
 public class Phones {
     int id;
     String name, price, imgLink;
